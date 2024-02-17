@@ -46,19 +46,19 @@ steps:
     args: ['push', 'us-central1-docker.pkg.dev/devops-lab2/reeba-100890704/devops-lab2:$COMMIT_SHA']
 
   # Deploy the container to Google Cloud Run
-  #- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-   # entrypoint: 'gcloud'
-   # args:
-   #   - 'run'
-    #  - 'deploy'
-    #  - 'reeba-100890704'
-    #  - '--image'
-     # - 'us-central1-docker.pkg.dev/devops-lab2/reeba-100890704/devops-lab2:latest'
-     # - '--region'
-     # - 'us-central1'
-     # - '--platform'
-     # - 'managed'
-     # - '--allow-unauthenticated' # Use '--no-allow-unauthenticated' if you don't want to allow unauthenticated access
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+     - 'run'
+     - 'deploy'
+     - 'reeba-100890704'
+     - '--image'
+      - 'us-central1-docker.pkg.dev/devops-lab2/reeba-100890704/devops-lab2:latest'
+     - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated' # Use '--no-allow-unauthenticated' if you don't want to allow unauthenticated access
 
 # options:
 #   # Set logs bucket behavior to create a user-owned logs bucket in the same region as the build project

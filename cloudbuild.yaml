@@ -51,7 +51,7 @@ steps:
     args:
       - 'run'
       - 'deploy'
-      - 'reeba-100890704'
+      - 'devops-lab2'
       - '--image'
       - 'us-central1-docker.pkg.dev/devops-lab2/reeba-100890704/devops-lab2:latest'
       - '--region'

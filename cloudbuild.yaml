@@ -36,37 +36,40 @@
 steps:
   # Build the Docker image using the Docker Cloud Builder
   - name: 'gcr.io/cloud-builders/docker'
-    # args: ['build', '-t', 'us-central1-docker.pkg.dev/woven-parsec-413519/Reeba-100890704/devops-lab2:$COMMIT_SHA', '.']
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/woven-parsec-413519/Reeba-100890704/devops-lab2:latest', '-t', 'us-central1-docker.pkg.dev/woven-parsec-413519/Reeba-100890704/devops-lab2:$COMMIT_SHA', '.']
+    # args: ['build', '-t', 'us-central1-docker.pkg.dev/devops-lab2/reeba-100890704/devops-lab2:$COMMIT_SHA', '.']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/devops-lab2/reeba-100890704/devops-lab2:latest', '-t', 'us-central1-docker.pkg.dev/devops-lab2/reeba-100890704/devops-lab2:$COMMIT_SHA', '.']
 
   # Push the image to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/woven-parsec-413519/Reeba-100890704/devops-lab2:latest']
+    args: ['push', 'us-central1-docker.pkg.dev/devops-lab2/reeba-100890704/devops-lab2:latest']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/woven-parsec-413519/Reeba-100890704/devops-lab2:$COMMIT_SHA']
+    args: ['push', 'us-central1-docker.pkg.dev/devops-lab2/reeba-100890704/devops-lab2:$COMMIT_SHA']
 
   # Deploy the container to Google Cloud Run
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'gcloud'
-    args:
-      - 'run'
-      - 'deploy'
-      - 'Reeba-100890704'
-      - '--image'
-      - 'us-central1-docker.pkg.dev/woven-parsec-413519/Reeba-100890704/devops-lab2:latest'
-      - '--region'
-      - 'us-central1'
-      - '--platform'
-      - 'managed'
-      - '--allow-unauthenticated' # Use '--no-allow-unauthenticated' if you don't want to allow unauthenticated access
+  #- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+   # entrypoint: 'gcloud'
+   # args:
+   #   - 'run'
+    #  - 'deploy'
+    #  - 'reeba-100890704'
+    #  - '--image'
+     # - 'us-central1-docker.pkg.dev/devops-lab2/reeba-100890704/devops-lab2:latest'
+     # - '--region'
+     # - 'us-central1'
+     # - '--platform'
+     # - 'managed'
+     # - '--allow-unauthenticated' # Use '--no-allow-unauthenticated' if you don't want to allow unauthenticated access
 
 # options:
 #   # Set logs bucket behavior to create a user-owned logs bucket in the same region as the build project
 #   logging: 'Adwaith-log'
 
 images:
-  - 'us-central1-docker.pkg.dev/woven-parsec-413519/Reeba-100890704/devops-lab2:latest'
-  - 'us-central1-docker.pkg.dev/woven-parsec-413519/Reeba-100890704/devops-lab2:$COMMIT_SHA'
+  - 'us-central1-docker.pkg.dev/devops-lab2/reeba-100890704/devops-lab2:latest'
+  - 'us-central1-docker.pkg.dev/devops-lab2/reeba-100890704/devops-lab2:$COMMIT_SHA'
+
+
+ 
 
 
 
